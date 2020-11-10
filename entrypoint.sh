@@ -52,7 +52,7 @@ OVPN_K8S_POD_NETWORK_ROUTE=$(getroute $OVPN_K8S_POD_NETWORK)
 envsubst < $OVPN_TEMPLATE > $OVPN_CONFIG
 
 IFS=',' read -r -a routes <<< "$OVPN_ROUTES"
-routes+=("$OVPN_K8S_SERVICE_NETWORK" "$OVPN_K8S_POD_NETWORK" "$OVPN_K8S_VPC_NETWORK")
+routes+=("$OVPN_K8S_SERVICE_NETWORK" "$OVPN_K8S_POD_NETWORK")
 
 for route in "${routes[@]}"; do
     if [[ "$route" =~ ^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\/([0-9]|[1-2][0-9]|3[0-2]))$ ]]; then
